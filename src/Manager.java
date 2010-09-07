@@ -153,14 +153,21 @@ public class Manager {
 	}
 
 	public final void hardcore(){
+		reset();
 		Random random = new Random();
+		
+		int sid = 0;
 		Enumeration<Tangible> list = objectList.elements();
 		while(list.hasMoreElements()){
 			Tangible tangible = list.nextElement();
 			
 			int x = random.nextInt(500) + 150;
 			int y = random.nextInt(300) + 130;
-			tangible.translate((float)-tangible.center.getX()+x, (float)-tangible.center.getY()+y);
+			float a = random.nextInt(180) * (float)(Math.PI) / 180;
+			deactivateObject(tangible);
+			activateObject(tangible.session_id, sid);
+			updateObject(tangible, x, y, a);
+			sid++;
 		}
 		
 		parent.repaint();
