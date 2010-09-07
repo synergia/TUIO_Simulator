@@ -152,6 +152,20 @@ public class Manager {
 		parent.repaint();	
 	}
 
+	public final void hardcore(){
+		Random random = new Random();
+		Enumeration<Tangible> list = objectList.elements();
+		while(list.hasMoreElements()){
+			Tangible tangible = list.nextElement();
+			
+			int x = random.nextInt(500) + 150;
+			int y = random.nextInt(300) + 130;
+			tangible.translate((float)-tangible.center.getX()+x, (float)-tangible.center.getY()+y);
+		}
+		
+		parent.repaint();
+	}
+
 	public final void activateObject(int old_id, int session_id) {
 	
 		Tangible tangible = objectList.get(old_id);

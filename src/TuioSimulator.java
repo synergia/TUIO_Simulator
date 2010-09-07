@@ -76,6 +76,8 @@ public class TuioSimulator {
 		JMenu optionMenu = new JMenu("Options");
 		final JMenuItem resetItem = new JMenuItem("Reset");
 		resetItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R,Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+		final JMenuItem hardcoreItem = new JMenuItem("Hardcore");
+		hardcoreItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X,Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		final JCheckBoxMenuItem verboseItem = new JCheckBoxMenuItem("Verbose");
 		verboseItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V,Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		final JCheckBoxMenuItem collisionItem = new JCheckBoxMenuItem("Collision Detection",false);
@@ -92,6 +94,13 @@ public class TuioSimulator {
 		resetItem.addActionListener( new ActionListener() { 
 			public void actionPerformed(ActionEvent evt) {
 				manager.reset();
+				simulation.reset();
+			} 
+		} );
+		
+		hardcoreItem.addActionListener( new ActionListener() { 
+			public void actionPerformed(ActionEvent evt) {
+				manager.hardcore();
 				simulation.reset();
 			} 
 		} );
@@ -143,6 +152,7 @@ public class TuioSimulator {
 		optionMenu.add(updateItem);
 		optionMenu.add(new JSeparator()); 
 		optionMenu.add(resetItem);
+		optionMenu.add(hardcoreItem);
 		optionMenu.add(quitItem);
 
 		
